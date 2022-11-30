@@ -570,33 +570,22 @@ The above test also tests for :
     ..             1 1 512
     stestfile      2 32 59
     $ cat stestfile
-    Machines take me by surprise with great frequency testing.
+    
 
 
 ***Purpose*** : To check if opening a noraml file under a small directory works.***The above output shows that a write was executed on a small file of TYPE 5 created under sdir small directory, BUT once we write more than 52 bytes, it gets converted into a normal file of TYPE 2!.***  
 ```
 The above test also tests for :
-    6.C :  Writing less than 52 bytes from small files
+   Writing less than 52 bytes from small files
 ```
 
-## ```5. Read```
+## ```3. Read```
  
-```
-    -> A. Reading less than 52 bytes from small files 
-    -> B. Reading exactly 52 bytes from small files
-    -> C. Reading more than 52 bytes from small files
-```
-
-### Test 5.A :
-
-    Tested under 4.A
-
-***Purpose*** : To check if reading less than 52 bytes from a small file works.
 
 
-### Test 5.B :
+### Test 3.A : Reading exactly 52 bytes from small files 
 
-    $ mkSFdir sdir
+    $ mkSMFdir sdir
     $ cd sdir
     $ touch stestfile
     $ writegarb stestfile exactly_52
@@ -606,9 +595,9 @@ The above test also tests for :
 
 ***Purpose*** : To check if reading exactly 52 bytes from a small file works and soesn't run into corner case issues.
 
-### Test 5.C :
+### Test 3.B : Reading more than 52 bytes from small files
 
-    $ mkSFdir sdir
+    $ mkSMFdir sdir
     $ cd sdir
     $ touch stestfile
     $ writegarb stestfile exactly_52
@@ -618,7 +607,7 @@ The above test also tests for :
 
 ***Purpose*** : To check if reading more than 52 bytes from a small file gives an error or just reads 52 bytes or less (how much ever exists!).
 
-## ```6. Write```
+## ```4. Write```
  
 ```
     -> A. Writing less than 52 bytes from small files 
@@ -626,13 +615,10 @@ The above test also tests for :
     -> C. Writing more than 52 bytes from small files
 ```
 
-### Test 6.A :
-
-    Tested under 4.A
 
 ***Purpose*** : To check if writing less than 52 bytes to a small file works.  
 
-### Test 6.B :
+### Test 4.A : Writing excatly 52 bytes from small files
 
     $ mkSFdir sdir
     $ cd sdir
@@ -648,38 +634,8 @@ The above test also tests for :
 
 ***Purpose*** : To check if writing exactly 52 bytes to a small file works runs into any corner case issues.  
 
-### Test 6.C :
-
-    Tested under 4.B
-    todo
     
 ***Purpose*** : ***To check if writing more than 52 bytes to a small file gives an error or converts it into a normal file from small file, we also read from it to make sure the contents are transferred to the disk's data blocks.***  
 
 
-## ```7. Delete```
- 
-```
-    -> A. Deleting a small file 
-```
-### Test 7.A :
 
-    $ mkSFdir sdir
-    $ cd sdir
-    $ touch stestfile
-    $ ls
-    .              4 31 48
-    ..             1 1 512
-    stestfile      5 32 0
-    $ rm stestfile
-    $ ls
-    .              4 31 48
-    ..             1 1 512
-
-***Purpose*** : To check if deleting a small file works using the ***rm*** command which ultimately uses the unlink system call to delete a file.```
-
-<br/><br/>
-
-## ***All the above mentioned commands works in our Xv6 copy, so please don't hesistate to try them out!***
-
-
-## Thank you!
